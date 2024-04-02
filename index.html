@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Puzzle Shooter</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.2.0/svg.min.js"></script> <!-- svg.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- vue -->
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--  <link rel="icon" type="image/x-icon" href="images/favicon.png">  -->
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body onLoad="onLoad()"></body> 
+    <div id="canvas">
+        <div id="game">
+            <div class="center-content">
+                <div id="circle-border">
+                    <Personc v-if="content.people != null" v-for="(person) in content.people" :person="person" :index="content.people.filter(person => !person.isDead).indexOf(person)"></Personc>
+                    <Bulletc v-for="(bullet,index) in content.orbBullets" :bullet="bullet" :index="index"></Bulletc>
+                    <h1 v-if="content.winningMsg != null" class="winningMsg" :style="{transform: 'scale('+content.winningMsg.scale+','+content.winningMsg.scale+') rotate('+content.winningMsg.rotation+'turn)', color:content.winningMsg.color}">{{content.winningMsg.text}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="lib.js"></script>
+<script src="const.js"></script>
+<script src="utils.js"></script>
+<script src="weaponSVGs.js"></script>
+<script src="classes.js"></script>
+<script src="levels.js"></script>
+<script src="components.js"></script>
+<script src="code.js"></script>
